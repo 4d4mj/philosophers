@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajabado <ajabado@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: ajabado <ajabado@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 02:51:56 by ajabado           #+#    #+#             */
-/*   Updated: 2024/07/24 02:51:56 by ajabado          ###   ########.fr       */
+/*   Updated: 2024/07/24 23:49:01 by ajabado          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	clear_data(t_data	*data)
 		free(data->philos);
 }
 
-void	ft_exit(t_data *data)
+void	ft_exit(t_data *data, int des_lock)
 {
 	int	i;
 
@@ -30,7 +30,8 @@ void	ft_exit(t_data *data)
 	while (++i < data->philo_num)
 	{
 		pthread_mutex_destroy(&data->forks[i]);
-		pthread_mutex_destroy(&data->philos[i].lock);
+		if (des_lock)
+			pthread_mutex_destroy(&data->philos[i].lock);
 	}
 	pthread_mutex_destroy(&data->write);
 	pthread_mutex_destroy(&data->lock);
@@ -43,9 +44,18 @@ int	one_philo(t_data *data)
 	if (pthread_create(&data->tid[0], NULL, &routine, &data->philos[0]))
 		return (ft_error(NULL, data));
 	pthread_detach(data->tid[0]);
-	while (data->dead == 0)
-		ft_usleep(0);
-	ft_exit(data);
+	while (1)
+	{
+		pthread_mutex_lock(&data->lock);
+		if (data->dead)
+		{
+			pthread_mutex_unlock(&data->lock);
+			break ;
+		}
+		pthread_mutex_unlock(&data->lock);
+		ft_usleep(100);
+	}
+	ft_exit(data, 0);
 	return (0);
 }
 
@@ -54,6 +64,6 @@ int	ft_error(char *str, t_data *data)
 	if (str)
 		printf("%s\n", str);
 	if (data)
-		ft_exit(data);
+		ft_exit(data, 1);
 	return (1);
 }

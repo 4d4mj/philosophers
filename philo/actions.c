@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajabado <ajabado@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: ajabado <ajabado@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 02:40:05 by ajabado           #+#    #+#             */
-/*   Updated: 2024/07/24 02:40:05 by ajabado          ###   ########.fr       */
+/*   Updated: 2024/07/24 23:54:06 by ajabado          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	drop_forks(t_philo *philo)
 	pthread_mutex_unlock(philo->r_fork);
 	messages(SLEEPING, philo);
 	ft_usleep(philo->data->sleep_time);
+	messages(THINKING, philo);
 }
 
 void	eat(t_philo *philo)
@@ -64,5 +65,4 @@ void	eat(t_philo *philo)
 	philo->eating = 0;
 	pthread_mutex_unlock(&philo->lock);
 	drop_forks(philo);
-	messages(THINKING, philo);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajabado <ajabado@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: ajabado <ajabado@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 02:40:46 by ajabado           #+#    #+#             */
-/*   Updated: 2024/07/24 02:40:46 by ajabado          ###   ########.fr       */
+/*   Updated: 2024/07/24 23:55:11 by ajabado          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ long			ft_atoi(const char *str);
 int				ft_error(char *str, t_data *data);
 int				ft_strcmp(char *s1, char *s2);
 void			messages(char *str, t_philo *philo);
-void			ft_exit(t_data *data);
+void			ft_exit(t_data *data, int des_lock);
 int				one_philo(t_data *data);
 
 //	time
 unsigned long	get_time(void);
-int				ft_usleep(useconds_t time);
+int				ft_usleep(unsigned long time);
 
 //	init
 int				init(t_data *data, char **argv, int argc);
@@ -83,4 +83,7 @@ void			eat(t_philo *philo);
 
 //	threads
 void			*routine(void *philo_pointer);
+void			*death_checker(void *philo_pointer);
+void			*end_checker(void *data_pointer);
+
 #endif

@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefiles                                          :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ajabado <ajabado@student.42beirut.com>     +#+  +:+       +#+         #
+#    By: ajabado <ajabado@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/24 03:11:49 by ajabado           #+#    #+#              #
-#    Updated: 2024/07/24 03:11:49 by ajabado          ###   ########.fr        #
+#    Updated: 2024/07/25 00:01:06 by ajabado          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ BOLD	= \033[1m
 
 OBJS = $(SRCS:.c=.o)
 SRCS = $(addprefix $(SRC_DIR), \
-utils.c utils2.c actions.c init.c threads.c main.c \
+utils.c utils2.c actions.c init.c threads.c death_checker.c init_thread.c main.c \
 )
 
 CC = cc

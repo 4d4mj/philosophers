@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajabado <ajabado@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: ajabado <ajabado@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 02:40:29 by ajabado           #+#    #+#             */
-/*   Updated: 2024/07/24 02:40:29 by ajabado          ###   ########.fr       */
+/*   Updated: 2024/07/24 23:48:58 by ajabado          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int	main(int argc, char **argv)
 		return (one_philo(&data));
 	if (init_thread(&data))
 		return (1);
-	ft_exit(&data);
+	ft_exit(&data, 1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajabado <ajabado@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: ajabado <ajabado@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 02:40:36 by ajabado           #+#    #+#             */
-/*   Updated: 2024/07/24 02:40:36 by ajabado          ###   ########.fr       */
+/*   Updated: 2024/07/24 22:30:51 by ajabado          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	check_argv(char **argv)
 	return (0);
 }
 
-int	ft_usleep(useconds_t time)
+int	ft_usleep(unsigned long time)
 {
 	unsigned long	start;
 
